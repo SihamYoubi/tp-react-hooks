@@ -55,8 +55,8 @@ _Votre réponse pour l'exercice 1 :_
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
-![Recherche un produit](./assets/recherche-produit.JPG)
 ```
+![Recherche un produit](./assets/recherche-produit.JPG)
 
 ### Exercice 2 : Context et Internationalisation
 #### Objectif : Gérer les préférences de langue
