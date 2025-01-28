@@ -24,7 +24,7 @@ const App = () => {
         </header>
         <main>
           <ProductSearch />
-          <ProductList />
+          {/* <ProductList /> */}
         </main>
       </div>
     </ThemeContext.Provider>
