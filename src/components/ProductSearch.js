@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect,useCallback} from 'react';
 import { ThemeContext } from '../App';
 import useProductSearch from '../hooks/useProductSearch';
+import { debounce } from "lodash"; 
 
 const ProductSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,14 +10,31 @@ const ProductSearch = () => {
   // TODO: Exercice 2.1 - Utiliser le LanguageContext
   
   // TODO: Exercice 1.2 - Utiliser le hook useDebounce
-  //ex1:
   const { 
     products, 
     loading, 
-    error,
-    
+    error, 
   } = useProductSearch();
   const [filteredProducts, setFilteredProducts] = useState([]);
+
+  const debouncedSearch = useCallback(
+    debounce((query) => {
+      if (query === "") {
+        setFilteredProducts(products);
+      } else {
+        const filtered = products.filter((product) =>
+          product.title.toLowerCase().includes(query.toLowerCase())
+        );
+        setFilteredProducts(filtered);
+      }
+    }, 1000), 
+    [products]
+  );
+ const handleSearchChange  = (e) => {
+  const query = e.target.value;
+  setSearchTerm(query);
+  debouncedSearch(query);
+};
   useEffect(() => {
     setFilteredProducts(products);
   }, [products]);
@@ -35,25 +53,26 @@ const ProductSearch = () => {
       Erreur: {error}
     </div>
   );
-  const handleOnChangeSearch = (e) => {
-    const query = e.target.value;
-    setSearchTerm(query);
-    if (!query) {
-      setFilteredProducts(products);
-    }else {
-    const filtered = products.filter(product=> 
-      product.title.toLowerCase().includes(query.toLowerCase()) 
-    );
-    setFilteredProducts(filtered);
-  }
-};
-  //
+
+//   const handleSearchChange  = (e) => {
+//     const query = e.target.value;
+//     setSearchTerm(query);
+//     if (!query) {
+//       setFilteredProducts(products);
+//     }else {
+//     const filtered = products.filter(product=> 
+//       product.title.toLowerCase().includes(query.toLowerCase()) 
+//     );
+//     setFilteredProducts(filtered);
+//   }
+// };
+  
   return (
     <div className="mb-4">
       <input
         type="text"
         value={searchTerm}
-        onChange={handleOnChangeSearch}
+        onChange={handleSearchChange }
         placeholder="Rechercher un produit..."
         className={`form-control ${isDarkTheme ? 'bg-dark text-light' : ''}`}
       />
