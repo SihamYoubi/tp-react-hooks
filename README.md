@@ -54,7 +54,8 @@ Pour chaque exercice :
 _Réponse pour l'exercice 1 :_
 Cette solution implémente une barre de recherche dynamique pour filtrer les produits.
 Gestion de l'état avec useState pour stocker la valeur saisie dans la barre de recherche.
-Filtrage des produits basé sur le texte de recherche saisi.
+Filtrage des produits basé sur le texte de recherche saisi.  
+
 **Problèmes Rencontrés et Solutions**
 Filtrage trop fréquent :
 Au départ, la recherche était effectuée à chaque frappe, ce qui ralentissait l'application.
@@ -69,11 +70,12 @@ Solution : J'ai utilisé lodash.debounce pour retarder l'exécution de la foncti
 - [ ] 2.2 Ajouter le sélecteur de langue
 - [ ] 2.3 Documenter votre solution ici
 
-_Votre réponse pour l'exercice 2 :_
-```
-Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
-```
+_Réponse pour l'exercice 2 :_
+J'ai utilisé useContext pour gérer l'internationalisation de l'application en français et en anglais. Un LanguageContext stocke la langue actuelle et permet à l'utilisateur de la changer via un sélecteur. Les textes sont stockés dans un objet translations contenant les traductions en français et en anglais. Les composants récupèrent dynamiquement la bonne traduction en fonction de la langue sélectionnée.  
+
+![Sélecteur de langue](./assets/anglais.jpg)
+![Sélecteur de langue](./assets/francais.jpg)
+
 
 ### Exercice 3 : Hooks Personnalisés
 #### Objectif : Créer des hooks réutilisables

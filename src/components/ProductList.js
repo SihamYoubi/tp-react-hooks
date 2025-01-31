@@ -5,7 +5,6 @@ import useProductSearch from '../hooks/useProductSearch';
 const ProductList = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   // TODO: Exercice 2.1 - Utiliser le LanguageContext pour les traductions
-  
   const { 
     products, 
     loading, 
@@ -49,6 +48,7 @@ const ProductList = () => {
                 <p className="card-text">
                   <strong>Prix: </strong>
                   {product.price}€
+
                 </p>
               </div>
             </div>

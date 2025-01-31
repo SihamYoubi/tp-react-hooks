@@ -2,12 +2,26 @@ import React, { useState, useContext, useEffect,useCallback} from 'react';
 import { ThemeContext } from '../App';
 import useProductSearch from '../hooks/useProductSearch';
 import { debounce } from "lodash"; 
+import { LanguageContext } from '../App';
 
+const translations = {
+  Français: {
+    searchPlaceholder: "Rechercher un produit...",
+    price: "Prix ",
+    title: "Catalogue de Produits"
+  },
+  Anglais: {
+    searchPlaceholder: "Search for a product...",
+    price: "Price ",
+    title: "Product Catalog"
+
+  },
+};
 const ProductSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const { isDarkTheme } = useContext(ThemeContext);
-  
   // TODO: Exercice 2.1 - Utiliser le LanguageContext
+   const {language} = useContext(LanguageContext);
   
   // TODO: Exercice 1.2 - Utiliser le hook useDebounce
   const { 
@@ -40,6 +54,7 @@ const ProductSearch = () => {
   }, [products]);
 
 
+
   if (loading) return (
     <div className="text-center my-4">
       <div className="spinner-border" role="status">
@@ -69,14 +84,19 @@ const ProductSearch = () => {
   
   return (
     <div className="mb-4">
+                <h1 className="text-center">{translations[language].title}</h1>
+
       <input
         type="text"
         value={searchTerm}
+        placeholder={translations[language].searchPlaceholder}
         onChange={handleSearchChange }
-        placeholder="Rechercher un produit..."
+        // placeholder="Rechercher un produit..."
         className={`form-control ${isDarkTheme ? 'bg-dark text-light' : ''}`}
       />
       
+      
+    
       <div className="row mt-4">
         {filteredProducts.map(product => (
           <div key={product.id} className="col-md-4 mb-4">
@@ -93,7 +113,8 @@ const ProductSearch = () => {
                 <h5 className="card-title">{product.title}</h5>
                 <p className="card-text">{product.description}</p>
                 <p className="card-text">
-                  <strong>Prix: </strong>
+                  {/* <strong>Prix: </strong> */}
+                  <strong> {translations[language].price}</strong>
                   {product.price}€
                 </p>
               </div>
