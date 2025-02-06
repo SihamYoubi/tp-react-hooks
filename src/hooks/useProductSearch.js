@@ -1,9 +1,24 @@
 import { useState, useEffect } from 'react';
 
 // TODO: Exercice 3.1 - Créer le hook useDebounce
+  export const useDebounce = (value, delay) =>{
+    const [debouncedValue, setDebouncedValue] = useState(value);
+  
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
+  
+      return () => {
+        clearTimeout(handler);
+      };
+    }, [value, delay]);
+  
+    return debouncedValue;
+  }
 // TODO: Exercice 3.2 - Créer le hook useLocalStorage
 
-const useProductSearch = () => {
+export const useProductSearch = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,4 +54,4 @@ const useProductSearch = () => {
   };
 };
 
-export default useProductSearch;
+//  export  {useProductSearch, useDebounce};

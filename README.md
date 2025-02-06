@@ -51,15 +51,16 @@ Pour chaque exercice :
 - [ ] 1.2 Implémenter le debounce sur la recherche
 - [ ] 1.3 Documenter votre solution ici
 
-_Réponse pour l'exercice 1 :_
-Cette solution implémente une barre de recherche dynamique pour filtrer les produits.
-Gestion de l'état avec useState pour stocker la valeur saisie dans la barre de recherche.
-Filtrage des produits basé sur le texte de recherche saisi.  
+_Réponse pour l'exercice 1 :_  
+
+
+Cette solution implémente une barre de recherche dynamique pour filtrer les produits. Elle utilise useState pour stocker la valeur saisie et useEffect pour déclencher le filtrage des produits en fonction du texte entré.
+
 
 **Problèmes Rencontrés et Solutions**
 Filtrage trop fréquent :
 Au départ, la recherche était effectuée à chaque frappe, ce qui ralentissait l'application.
-Solution : J'ai utilisé lodash.debounce pour retarder l'exécution de la fonction de recherche, ce qui a réduit le nombre de filtrages effectués.
+Solution : J'ai utilisé useDebounce pour retarder l'exécution de la fonction de recherche, ce qui a réduit le nombre de filtrages effectués.
 
 ![Recherche un produit](./assets/recherche-produit.JPG)
 
@@ -70,11 +71,11 @@ Solution : J'ai utilisé lodash.debounce pour retarder l'exécution de la foncti
 - [ ] 2.2 Ajouter le sélecteur de langue
 - [ ] 2.3 Documenter votre solution ici
 
-_Réponse pour l'exercice 2 :_
+_Réponse pour l'exercice 2 :_  
 J'ai utilisé useContext pour gérer l'internationalisation de l'application en français et en anglais. Un LanguageContext stocke la langue actuelle et permet à l'utilisateur de la changer via un sélecteur. Les textes sont stockés dans un objet translations contenant les traductions en français et en anglais. Les composants récupèrent dynamiquement la bonne traduction en fonction de la langue sélectionnée.  
 
-![Sélecteur de langue](./assets/anglais.jpg)
-![Sélecteur de langue](./assets/francais.jpg)
+![Sélecteur de langue](./assets/anglais.JPG)
+![Sélecteur de langue](./assets/francais.JPG)
 
 
 ### Exercice 3 : Hooks Personnalisés

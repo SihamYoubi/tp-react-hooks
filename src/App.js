@@ -32,7 +32,7 @@ const App = () => {
         </main>
       </div>
       </LanguageContext.Provider>
-    // </ThemeContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
