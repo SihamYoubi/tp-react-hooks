@@ -30,6 +30,7 @@ const ProductList = () => {
   return (
     <div>
       {/* TODO: Exercice 4.1 - Ajouter le bouton de rechargement */}
+    
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {products.map(product => (
           <div key={product.id} className="col">
@@ -76,8 +77,8 @@ const ProductList = () => {
             </button>
           </li>
         </ul>
-      </nav>
-      */}
+      </nav> */}
+     
     </div>
   );
 };

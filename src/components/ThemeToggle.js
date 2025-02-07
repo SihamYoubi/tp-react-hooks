@@ -3,7 +3,6 @@ import { ThemeContext } from '../App';
 
 const ThemeToggle = () => {
   const { isDarkTheme, setIsDarkTheme } = useContext(ThemeContext);
-  
   return (
     <button
       onClick={() => setIsDarkTheme(!isDarkTheme)}

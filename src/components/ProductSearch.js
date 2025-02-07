@@ -30,7 +30,6 @@ const ProductSearch = () => {
     //
     const handleSearchChange = (e) => {
       const query = e.target.value;
-      console.log("query ", query); 
       
       setSearchTerm(query);
   };

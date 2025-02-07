@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react';
       const handler = setTimeout(() => {
         setDebouncedValue(value);
       }, delay);
-  
       return () => {
         clearTimeout(handler);
       };
@@ -16,7 +15,18 @@ import { useState, useEffect } from 'react';
   
     return debouncedValue;
   }
+  
 // TODO: Exercice 3.2 - Créer le hook useLocalStorage
+export const  useLocalStorage =(key, initialValue)=> {
+  const storedValue = typeof window !== "undefined" ? localStorage.getItem(key) : null;
+
+
+  const [stored, setStored] = useState(storedValue !== null ? JSON.parse(storedValue) : initialValue);
+   useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(stored));
+  }, [key, stored]);
+  return [stored, setStored];
+}
 
 export const useProductSearch = () => {
   const [products, setProducts] = useState([]);
