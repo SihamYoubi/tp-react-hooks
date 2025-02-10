@@ -95,8 +95,8 @@ const ProductSearch = () => {
                 }`}
             />
 
-{debouncedSearchTerm === '' ? <ProductList /> : null}
-            <div className='row mt-4'>
+{debouncedSearchTerm === '' ? <ProductList /> : 
+             <div className='row mt-4'>
                 {filteredProducts.map((product) => (
                     <div key={product.id} className='col-md-4 mb-4'>
                         <div
@@ -131,7 +131,8 @@ const ProductSearch = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> 
+            }
         </div>
     );
 };

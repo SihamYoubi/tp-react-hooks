@@ -74,7 +74,12 @@ Solution : J'ai utilisé useDebounce pour retarder l'exécution de la fonction d
 _Réponse pour l'exercice 2 :_  
 J'ai utilisé useContext pour gérer l'internationalisation de l'application en français et en anglais. Un LanguageContext stocke la langue actuelle et permet à l'utilisateur de la changer via un sélecteur. Les textes sont stockés dans un objet translations contenant les traductions en français et en anglais. Les composants récupèrent dynamiquement la bonne traduction en fonction de la langue sélectionnée.  
 
+
+Traduction de la page en français
 ![Sélecteur de langue](./assets/anglais.JPG)
+
+
+Traduction de la page en anglais
 ![Sélecteur de langue](./assets/francais.JPG)
 
 
@@ -85,11 +90,8 @@ J'ai utilisé useContext pour gérer l'internationalisation de l'application en 
 - [ ] 3.2 Créer le hook useLocalStorage
 - [ ] 3.3 Documenter votre solution ici
 
-_Votre réponse pour l'exercice 3 :_
-```
-Expliquez votre solution ici
+_Réponse pour l'exercice 3 :_  
 [Ajoutez vos captures d'écran]
-```
 
 ### Exercice 4 : Gestion Asynchrone et Pagination
 #### Objectif : Gérer le chargement et la pagination
@@ -98,11 +100,12 @@ Expliquez votre solution ici
 - [ ] 4.2 Implémenter la pagination
 - [ ] 4.3 Documenter votre solution ici
 
-_Votre réponse pour l'exercice 4 :_
-```
-Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
-```
+_Réponse pour l'exercice 4 :_  
+ - Une fonction `handleButton` a été créée pour gérer la logique du rechargement des produits. Cette fonction appelle la fonction `fetchProducts`, qui récupère les produits depuis l'API.
+
+Rechargement de la page
+<!-- ![Rechargement](./assets/rechargement.JPG) -->
+
 
 ## Rendu
 
