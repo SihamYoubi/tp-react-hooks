@@ -31,16 +31,20 @@ export const useProductSearch = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   // TODO: Exercice 4.2 - Ajouter l'état pour la pagination
-
+  const [skip, setSkip] = useState(0); 
+  const limit = 30;
+  const [totalProducts, setTotalProducts] = useState(0); 
   const fetchProducts = async () => {
     try {
-      //
+  
       setLoading(true);
       // TODO: Exercice 4.2 - Modifier l'URL pour inclure les paramètres de pagination
-      const response = await fetch('https://api.daaif.net/products?delay=1000');
+      const response = await fetch(`https://api.daaif.net/products?delay=1000&skip=${skip}&limit=${limit}`);
       if (!response.ok) throw new Error('Erreur réseau');
       const data = await response.json();
       setProducts(data.products);
+      //
+      setTotalProducts(data.total);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -50,14 +54,15 @@ export const useProductSearch = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, []); // TODO: Exercice 4.2 - Ajouter les dépendances pour la pagination
+  }, [skip]); // TODO: Exercice 4.2 - Ajouter les dépendances pour la pagination
 
   // TODO: Exercice 4.1 - Ajouter la fonction de rechargement
   const handleButton =  () =>{
     fetchProducts();
     }
   // TODO: Exercice 4.2 - Ajouter les fonctions pour la pagination
-
+  const nextPage = () => setSkip((prev) => Math.min(prev + limit, totalProducts - limit));
+  const previousPage = () => setSkip((prev) => Math.max(prev - limit, 0));
   return { 
     products, 
     loading, 
@@ -65,6 +70,7 @@ export const useProductSearch = () => {
     // TODO: Exercice 4.1 - Retourner la fonction de rechargement
     handleButton,
     // TODO: Exercice 4.2 - Retourner les fonctions et états de pagination
+    skip, totalProducts, nextPage, previousPage, limit
   };
 };
 

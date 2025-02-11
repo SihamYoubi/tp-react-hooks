@@ -3,7 +3,6 @@ import { ThemeContext } from '../App';
 import { useProductSearch, useDebounce } from '../hooks/useProductSearch';
 import { LanguageContext } from '../App';
 import ProductList from './ProductList';
-
 const translations = {
     Français: {
         searchPlaceholder: 'Rechercher un produit...',
@@ -27,7 +26,7 @@ const ProductSearch = () => {
     const { products, loading, error } = useProductSearch();
 
     const [filteredProducts, setFilteredProducts] = useState([]);
-    //
+    
     const handleSearchChange = (e) => {
       const query = e.target.value;
       
@@ -91,7 +90,7 @@ const ProductSearch = () => {
                 placeholder={translations[language].searchPlaceholder}
                 onChange={handleSearchChange}
                 className={`form-control ${
-                    isDarkTheme ? 'bg-dark text-light' : ''
+                    isDarkTheme ? 'bg-dark text-light border border-light' : ''
                 }`}
             />
 
@@ -101,7 +100,7 @@ const ProductSearch = () => {
                     <div key={product.id} className='col-md-4 mb-4'>
                         <div
                             className={`card h-100 ${
-                                isDarkTheme ? 'bg-dark text-light' : ''
+                                isDarkTheme ? 'bg-dark text-light border border-light' : ''
                             }`}
                         >
                             {product.thumbnail && (

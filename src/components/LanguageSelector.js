@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { LanguageContext } from '../App';
+import { LanguageContext, ThemeContext } from '../App';
 
 // const LanguageSelector = () => {
 //     const { language, setLanguage } = useContext(LanguageContext);
@@ -20,6 +20,7 @@ import { LanguageContext } from '../App';
 
 const LanguageSelector = () => {
     const { language, setLanguage } = useContext(LanguageContext);
+    const { isDarkTheme } = useContext(ThemeContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => setIsOpen(!isOpen);
@@ -31,14 +32,20 @@ const LanguageSelector = () => {
 
     return (
         <div className="position-relative">
-            <button onClick={toggleDropdown} className='px-5 py-2 rounded border bg-light'>
+            <button onClick={toggleDropdown}
+             className={`px-5 py-2 rounded ${
+                isDarkTheme 
+                  ? 'bg-dark text-light border border-light' 
+                  : 'bg-light text-dark border border-dark'
+              }`}
+             >
                 {language} ▼
             </button>
 
             {isOpen && (
                 <ul className="dropdown-menu show position-absolute">
-                    <li onClick={() => handleSelectLanguage('Français')} className="dropdown-item">Français</li>
-                    <li onClick={() => handleSelectLanguage('Anglais')} className="dropdown-item">Anglais</li>
+                    <li onClick={() => handleSelectLanguage('Français')} className="dropdown-item cursor-pointer">Français</li>
+                    <li onClick={() => handleSelectLanguage('Anglais')} className="dropdown-item cursor-pointer">Anglais</li>
                 </ul>
             )}
         </div>
